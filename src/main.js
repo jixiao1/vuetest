@@ -8,7 +8,7 @@ import Vue from 'vue'
 //移入mint-ui中的Header头部
 import {Header} from 'mint-ui'
 // 导入App根组件
-import App from './App.vue'
+import App from './App.vue'  
 
 // 导入mint-ui的css样式
 import './lib/mui/css/mui.min.css'
