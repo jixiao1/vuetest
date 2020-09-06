@@ -5,18 +5,35 @@
 //导入Vue组件
  
 import Vue from 'vue'
-//移入mint-ui中的Header头部
-import {Header} from 'mint-ui'
+//导入Vue_router
+import VueRouter from 'vue-router'
+
+//使用 vue-resource
+import VueResource from 'vue-resource'
+
+//使用路由
+
+Vue.use(VueRouter)
+Vue.use(VueResource)
+//移入mint-ui中的Header头部 Swipe, SwipeItem组件
+import {Header, Swipe, SwipeItem} from 'mint-ui'
+Vue.component(Swipe.name, Swipe);
+Vue.component(SwipeItem.name, SwipeItem);
 // 导入App根组件
 import App from './App.vue'  
 
+//导入router.js
+import router from './router.js'
+
 // 导入mint-ui的css样式
 import './lib/mui/css/mui.min.css'
+import './lib/mui/css/icons-extra.css'
 Vue.component(Header.name,Header)
 const vm=new Vue({
   el: "#app",
   data: {
 
   },
+  router, //挂载路由对象
   render: h => h(App)
 })
