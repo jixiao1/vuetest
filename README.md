@@ -42,3 +42,41 @@
 # 改造九宫格的区域样式
 
 
+## 改造新闻资讯 路由链接
+
+
+## 新闻资讯 页面 制作
+
+1.绘制界面，使用mui中media-list.html
+
+2.使用 vue-resource 获取数据
+
+3.渲染真实的数据
+
+
+## 实现新闻咨询列表 点击跳转到新闻详情
+
+1.把列表中的每一项改造为 router-link,同时，在跳转的时候应该提供唯一的Id标识符
+	<router-link href="javascript:;" :to="'/home/newsInfo/'+item.id">
+    path:'/home/newsInfo/:id',
+2.创建新闻详情的组件页面 NewsInfo.vue
+
+3.在路由模板中，将新闻详情页路由地址和组件页面对应起来
+
+
+## 实现 新闻详情的页面的布局 和数据的渲染
+
+## 单独封装一个 comment.vue 评论子组件
+
+1. 先创建一个单独的comment.vue 组件模板
+
+2.在需要使用 comment 组件的页面中，先手动导入comment 组件
+
++'import  comment from './src/components/subcomment/comment.vue'
+
+3. 在父组件中，使用’components'属性，将刚刚导入的组件，作为子组件来使用
+
+4.在注册子组件时候的，注册名称，以标签形式，在页面中引用就即可
+
+
+

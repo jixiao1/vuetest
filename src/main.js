@@ -15,15 +15,25 @@ import VueResource from 'vue-resource'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
+Vue.http.options.root = 'http://www.liulongbin.top:3005'; //全局配置vue-resurce
 //移入mint-ui中的Header头部 Swipe, SwipeItem组件
-import {Header, Swipe, SwipeItem} from 'mint-ui'
+import {Header, Swipe, SwipeItem, Button} from 'mint-ui'
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Button.name, Button);
+// 定义全局时间的过滤器
+import moment from 'moment'
+//全局过滤时间
+Vue.filter('dateFormat',function(dataStr,pattarn="YYYY-MM-DD HH:mm:ss"){
+     return moment(dataStr).format(pattarn);
+})
 // 导入App根组件
 import App from './App.vue'  
 
 //导入router.js
 import router from './router.js'
+
+// 定义全局
 
 // 导入mint-ui的css样式
 import './lib/mui/css/mui.min.css'

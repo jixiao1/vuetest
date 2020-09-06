@@ -7,6 +7,10 @@ import GoshopContainer from '../src/components/Tabbar/GoshopContainer.vue'
 import MemerContainer from '../src/components/Tabbar/MemerContainer.vue'
 
 import SearchContainer from '../src/components/Tabbar/SearchContainer.vue'
+//导入新闻列表组件
+import Newlistcontainer from '../src/components/Newlist/Newlist.vue'
+
+import NewsInfo from '../src/components/Newlist/NewsInfo.vue'
 
 // 3. 创建路由对象
 var router = new VueRouter({
@@ -17,7 +21,13 @@ var router = new VueRouter({
     },
     {
       path: '/home',
-      component: HomeContainer,
+      component: HomeContainer
+      // children:[
+      //   { 
+      //     path:'/home/newslist',
+      //     components: () => import('../src/components/Newlist/Newlist.vue')
+      //   }
+      // ]
     },
     {
          path: '/memer', 
@@ -30,6 +40,14 @@ var router = new VueRouter({
     {
       path: '/search',
       component: SearchContainer
+    },
+    {
+      path: '/home/newslist',
+      component:Newlistcontainer
+    },
+    {
+      path:'/home/newsInfo/:id',
+      component:NewsInfo
     }
     
   ],
