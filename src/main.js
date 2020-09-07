@@ -16,6 +16,7 @@ import VueResource from 'vue-resource'
 Vue.use(VueRouter)
 Vue.use(VueResource)
 Vue.http.options.root = 'http://www.liulongbin.top:3005'; //全局配置vue-resurce
+Vue.http.options.emulateJSON = true;
 //移入mint-ui中的Header头部 Swipe, SwipeItem组件
 import {Header, Swipe, SwipeItem, Button} from 'mint-ui'
 Vue.component(Swipe.name, Swipe);

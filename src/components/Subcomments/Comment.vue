@@ -2,8 +2,8 @@
 <div class="coment-container">
   <div class="title">评论内容</div>
   <hr>
-  <textarea placeholder="请输入你要书写的内容(最多不超过120字)"></textarea>
-  <mt-button type='primary' size='large'>发表评论</mt-button>
+  <textarea placeholder="请输入你要书写的内容(最多不超过120字)" :maxlength="120" v-model="msg"></textarea>
+  <mt-button type='primary' size='large' @click="postComment">发表评论</mt-button>
   <div class="mt-list-content">
     <div class="mt-list" v-for="(item,index) in commentlist" :key="item.add_time">
       <div class="mt-title">
@@ -33,7 +33,8 @@ export default {
     return {
        id:this.cmtId,
        pageIndex:1, //默认显示第一楼
-       commentlist:[]
+       commentlist:[],
+       msg:"" //评论的内容
     }
   },
   created () {
@@ -57,6 +58,35 @@ export default {
     getMore() {
       this.pageIndex++
       this.getComment()
+    },
+    postComment () {
+     if(this.msg.trim().length===0){
+          Toast("评论内容不能为空");
+     }
+    //  发表评论
+
+    //参数1； 请求的url 地址
+
+    //参数2； 提交到服务器的数据对象 {content:this.msg.tirm()}
+
+    //参数3；定义提交时候，表单中数据的格式{}
+     this.$http.post('api/postcomment/'+this.$route.params.id,{
+       content:this.msg.trim()
+     }).then(result =>{
+        if(result.body.status===0){
+            // Toast("成功了")
+            var  cmt={
+              user_name:"匿名用户",
+              add_time: Date.now(),
+              content:this.msg.trim()
+            }
+
+            this.commentlist.unshift(cmt);
+            this.msg=''
+        }else{
+          Toast("失败了")
+        }
+     })
     }
   }
 }
