@@ -2,15 +2,15 @@ import VueRouter from 'vue-router'
 //在路由中导入组件模块
 import HomeContainer from '../src/components/Tabbar/HomeContainer.vue'
 
-import GoshopContainer from '../src/components/Tabbar/GoshopContainer.vue'
+// import GoshopContainer from '../src/components/Tabbar/GoshopContainer.vue'
 
-import MemerContainer from '../src/components/Tabbar/MemerContainer.vue'
+// import MemerContainer from '../src/components/Tabbar/MemerContainer.vue'
 
-import SearchContainer from '../src/components/Tabbar/SearchContainer.vue'
+// import SearchContainer from '../src/components/Tabbar/SearchContainer.vue'
 //导入新闻列表组件
-import Newlistcontainer from '../src/components/Newlist/Newlist.vue'
+// import Newlistcontainer from '../src/components/Newlist/Newlist.vue'
 
-import NewsInfo from '../src/components/Newlist/NewsInfo.vue'
+// import NewsInfo from '../src/components/Newlist/NewsInfo.vue'
 
 // 3. 创建路由对象
 var router = new VueRouter({
@@ -31,23 +31,23 @@ var router = new VueRouter({
     },
     {
          path: '/memer', 
-         component: MemerContainer
+         component: () => import("../src/components/Tabbar/MemerContainer.vue")
     },
     {
          path: '/cart',
-         component: GoshopContainer
+         component: () => import("../src/components/Tabbar/GoshopContainer.vue")
     },
     {
       path: '/search',
-      component: SearchContainer
+      component: () => import("../src/components/Tabbar/SearchContainer.vue")
     },
     {
       path: '/home/newslist',
-      component:Newlistcontainer
+      component:() => import("../src/components/Newlist/Newlist.vue")
     },
     {
       path:'/home/newsInfo/:id',
-      component:NewsInfo
+      component:() => import("../src/components/Newlist/NewsInfo.vue")
     }
     
   ],

@@ -20,7 +20,7 @@
    
       
   </div>
-   <mt-button type='danger' size='large' plain>加载更多</mt-button>
+   <mt-button type='danger' size='large' plain @click="getMore">加载更多</mt-button>
    <!-- <div>{{cmtId}}</div> -->
 </div>
 </template>
@@ -45,12 +45,18 @@ export default {
         // console.log(result);
         if(result.body.status===0){
           //  Toast("成功")
-          this.commentlist=result.body.message;
+          // this.commentlist=result.body.message;
+          // 数据拼接，防止新数据被老数据所覆盖
+          this.commentlist=this.commentlist.concat(result.body.message);
           console.log(this.commentlist)
         }else{
            Toast("失败")
         }
        })
+    },
+    getMore() {
+      this.pageIndex++
+      this.getComment()
     }
   }
 }
